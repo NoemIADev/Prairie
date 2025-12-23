@@ -2,4 +2,4 @@ site_name: Prairie Documentation
 site_description: Documentation de mes projets de formation DEV IA
 site_author: Noemie
 theme:
-    name: dracula
+  name: readthedocs
