@@ -1,5 +1,11 @@
 site_name: Prairie Documentation
-site_description: Documentation de mes projets de formation DEV IA
-site_author: Noemie
+
+site_url: https://noemiadev.github.io/Prairie/
+
 theme:
   name: readthedocs
+
+nav:
+  - Accueil: index.md
+  - Requêtes HTTP: requetesHTTP.md
+  - Vérification: verification.md
