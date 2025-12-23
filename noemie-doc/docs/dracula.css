@@ -1,0 +1,55 @@
+/* Dracula-ish for MkDocs (simple) */
+:root{
+  --bg: #282a36;
+  --bg2:#44475a;
+  --txt:#f8f8f2;
+  --muted:#bfbfbf;
+  --cyan:#8be9fd;
+  --green:#50fa7b;
+  --pink:#ff79c6;
+  --purple:#bd93f9;
+  --red:#ff5555;
+}
+
+/* Page */
+html, body{
+  background: var(--bg) !important;
+  color: var(--txt) !important;
+}
+
+/* Links */
+a, a:visited{ color: var(--cyan) !important; }
+a:hover{ color: var(--pink) !important; }
+
+/* Content container (MkDocs default theme) */
+.container, .col-md-9, .col-md-3{
+  color: var(--txt) !important;
+}
+
+/* Sidebar / navigation */
+.bs-sidebar, .navbar, .navbar-default{
+  background: var(--bg2) !important;
+  border-color: rgba(255,255,255,0.08) !important;
+}
+.bs-sidebar .nav > li > a{
+  color: var(--txt) !important;
+}
+.bs-sidebar .nav > li > a:hover{
+  background: rgba(255,255,255,0.06) !important;
+  color: var(--cyan) !important;
+}
+
+/* Top bar title */
+.navbar-default .navbar-brand{
+  color: var(--txt) !important;
+}
+.navbar-default .navbar-brand:hover{
+  color: var(--purple) !important;
+}
+
+/* Code blocks */
+pre, code, .codehilite{
+  background: #1f202a !important;
+  color: var(--txt) !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+}
