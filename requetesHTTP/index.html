@@ -8,7 +8,7 @@
         <meta name="author" content="Noemie">
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Verification - Prairie Documentation</title>
+        <title>Comprendre une requête HTTP - Prairie Documentation</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/fontawesome.min.css" rel="stylesheet">
         <link href="../css/brands.min.css" rel="stylesheet">
@@ -38,10 +38,10 @@
                                 <a href=".." class="nav-link">Bienvenue dans la prairie</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../requetesHTTP/" class="nav-link">Comprendre une requête HTTP</a>
+                                <a href="./" class="nav-link active" aria-current="page">Comprendre une requête HTTP</a>
                             </li>
                             <li class="nav-item">
-                                <a href="./" class="nav-link active" aria-current="page">Verification</a>
+                                <a href="../verification/" class="nav-link">Verification</a>
                             </li>
                         </ul>
 
@@ -52,12 +52,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../requetesHTTP/" class="nav-link">
+                                <a rel="prev" href=".." class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" class="nav-link disabled">
+                                <a rel="next" href="../verification/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -79,8 +79,52 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="1"><a href="#verification" class="nav-link">Verification</a>
+            <li class="nav-item" data-bs-level="1"><a href="#comprendre-une-requete-http" class="nav-link">Comprendre une requête HTTP</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#quest-ce-quune-requete-http" class="nav-link">Qu'est-ce qu’une requête HTTP ?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#quest-ce-quun-dns" class="nav-link">Qu'est-ce qu’un DNS ?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#quest-ce-que-get" class="nav-link">Qu'est-ce que GET ?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#quest-ce-que-https" class="nav-link">Qu'est-ce que HTTPS ?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#quest-ce-que-dummyjsoncom" class="nav-link">Qu'est-ce que dummyjson.com ?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#quest-ce-que-le-port-443" class="nav-link">Qu'est-ce que le port 443 ?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#quest-ce-que-recipes" class="nav-link">Qu'est-ce que recipes ?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#quest-ce-que" class="nav-link">Qu'est-ce que "?" ?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#quest-ce-que-limit" class="nav-link">Qu’est-ce que limit ?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#quest-ce-que-10" class="nav-link">Qu’est-ce que 10 ?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#quest-ce-que-http2" class="nav-link">Qu’est-ce que HTTP/2 ?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -88,10 +132,53 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="verification">Verification</h1>
-<p>Verifie si python et Node sont installés
-et si 2+2 font 4 (on ne sait jamais ca peut changer)</p>
-<p>Vous trouverez la fonction [ici] (https://github.com/NoemIADev/Prairie/blob/master/verification.ps1)</p></div>
+<h1 id="comprendre-une-requete-http">Comprendre une requête HTTP</h1>
+<p>Internet est largement utilisé pour permettre aux machines de communiquer entre elles.
+Voici un exemple de requête HTTP :</p>
+<pre><code class="language-bash">GET https://dummyjson.com:443/recipes?limit=10 HTTP/2
+</code></pre>
+<p>L’objectif est d’analyser la nature, le type et le format des éléments de cette requête.</p>
+<h2 id="quest-ce-quune-requete-http"><strong>Qu'est-ce qu’une requête HTTP ?</strong></h2>
+<p>Une requête HTTP est un <strong>message envoyé par un client à un serveur</strong> afin de demander une action précise, comme récupérer des données, envoyer des informations ou modifier une ressource.</p>
+<h2 id="quest-ce-quun-dns"><strong>Qu'est-ce qu’un DNS ?</strong></h2>
+<p>Le <em>DNS</em> (Domain Name System) est un système qui permet de traduire un <strong>nom de domaine</strong> lisible par l’humain (ex : dummyjson.com) en <strong>adresse IP</strong> compréhensible par les machines.</p>
+<h2 id="quest-ce-que-get"><strong>Qu'est-ce que GET ?</strong></h2>
+<p><em>GET</em> est une méthode HTTP.
+Elle sert à demander des données au serveur sans modifier l’état des ressources.</p>
+<h3 id="mais-cest-quoi-une-methode-http"><strong>mais c'est quoi une methode http ?</strong></h3>
+<p>👉 Une méthode HTTP indique <strong>l’action que le client demande au serveur</strong>.</p>
+<p>Par exemple :</p>
+<p>GET : demander des informations</p>
+<p>POST : envoyer des informations</p>
+<p>UDAPTE : mettre à jours des informations</p>
+<p>DELETE : supprimer des informations</p>
+<p>Il en existe plusieurs, mais pour faire court, cela veut dire : « je veux faire ça ».</p>
+<h2 id="quest-ce-que-https"><strong>Qu'est-ce que HTTPS ?</strong></h2>
+<p><em>HTTPS</em> est la <strong>version sécurisée</strong> du protocole HTTP.
+Les échanges entre le client et le serveur sont chiffrés, ce qui garantit la confidentialité et l’intégrité des données échangées.
+<strong>Version courte</strong>: HTTPS, c’est comme dire : “coucou, confirme-moi que c’est bien toi, et parlons en privé”.</p>
+<h2 id="quest-ce-que-dummyjsoncom"><strong>Qu'est-ce que dummyjson.com ?</strong></h2>
+<p><em>dummyjson.com</em> est le nom de domaine du serveur ciblé par la requête,tout simplement.</p>
+<h2 id="quest-ce-que-le-port-443"><strong>Qu'est-ce que le port 443 ?</strong></h2>
+<p>Le port <em>443</em> est le port standard utilisé pour les communications HTTPS.
+Il <strong>indique</strong> au serveur <strong>sur quel canal réseau</strong> la communication doit avoir lieu.
+<strong>version courte</strong>: Tu frappes à la porte 443 parce que c’est la porte d’entrée du HTTPS.</p>
+<h2 id="quest-ce-que-recipes"><strong>Qu'est-ce que recipes ?</strong></h2>
+<p><em>Recipes</em>, c’est ce que l’on veut “<em>GET</em>” sur le serveur.C'est <strong>ce qu'on demande</strong>.</p>
+<h2 id="quest-ce-que"><strong>Qu'est-ce que "?" ?</strong></h2>
+<p>Le caractère <em>?</em> indique que l’on va <strong>ajouter des précisions</strong> à la demande.
+c’est comme dire : “<em>je veux ça, mais avec ces détails</em>”.</p>
+<h2 id="quest-ce-que-limit"><strong>Qu’est-ce que limit ?</strong></h2>
+<p><em>limit</em> est un paramètre de requête.
+Il permet d’indiquer une <strong>contrainte</strong> sur la réponse attendue, par exemple le nombre maximum d’éléments.</p>
+<h2 id="quest-ce-que-10"><strong>Qu’est-ce que 10 ?</strong></h2>
+<p><em>10</em> est la valeur <strong>associée</strong> au paramètre <em>limit</em>.
+Cela signifie que la requête <strong>demande un maximum de 10 éléments</strong> dans la réponse.</p>
+<h2 id="quest-ce-que-http2"><strong>Qu’est-ce que HTTP/2 ?</strong></h2>
+<p>HTTP/2 est la version du protocole HTTP utilisée pour la communication</p>
+<h3 id="en-conclusion">En conclusion</h3>
+<p>À quoi ça sert ? Pas forcément à grand-chose au quotidien.
+Mais savoir ce que l’on tape aide à comprendre ce que l’on fait, à éviter les erreurs et à ne pas agir “au hasard”.</p></div>
             </div>
         </div>
 
