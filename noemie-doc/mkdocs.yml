@@ -10,5 +10,5 @@ nav:
   - Requêtes HTTP: requetesHTTP.md
   - Vérification: verification.md
 
-    extra_css:
+extra_css:
   - dracula.css
