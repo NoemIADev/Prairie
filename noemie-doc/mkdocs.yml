@@ -9,3 +9,6 @@ nav:
   - Accueil: index.md
   - Requêtes HTTP: requetesHTTP.md
   - Vérification: verification.md
+
+    extra_css:
+  - dracula.css
