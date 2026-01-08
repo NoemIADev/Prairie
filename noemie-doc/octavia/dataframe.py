@@ -4,7 +4,7 @@ import random
 
 #créer une fonction qui remplit dataframe avec 1,2,3 et ref avec 1 ou 2 ou 3 qui est = à ref et les autre aleatoire mais tous different,puis A,B,C,D qui vont choisir une barre aleatoirement parmi 1,2,3 qui n'est pas egale a ref
 
-def auto() :
+def auto(n) :
       #100 lignes de barres qui sont toujours differentes
      valeurs_barres = [random.sample(range(0, 101), 3) for _ in range(100)]
      
@@ -38,4 +38,8 @@ def auto() :
 
 
      return df
-print(auto())
+print(auto(1))
+
+if __name__ == "__main__":
+    df = auto(1000)
+    print(df)
