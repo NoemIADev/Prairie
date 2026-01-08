@@ -6,12 +6,9 @@ site_dir: site
 theme:
   name: readthedocs
 
-I'm not sure what you mean by "same incandation." Could you clarify what changes you'd like to make to the `nav` section? 
 
-For example, are you looking to:
-- Reorganize the navigation structure?
-- Add more items?
-- Change the indentation or formatting?
-- Add nested navigation levels?
-
-Please provide more details about what you want to modify.
+nav:
+  - Accueil: index.md
+  - Requêtes HTTP: requetesHTTP.md
+  - Vérification: verification.md
+  - Make Groupe: makegroupe.md
