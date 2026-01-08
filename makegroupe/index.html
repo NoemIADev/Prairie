@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Fonction pour crée des groupes aleatoirement - Prairie Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Fonction pour cr\u00e9e des groupes aleatoirement";
+        var mkdocs_page_input_path = "makegroupe.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Prairie Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Accueil</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../requetesHTTP/">Requêtes HTTP</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../verification/">Vérification</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Prairie Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Fonction pour crée des groupes aleatoirement</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="fonction-pour-cree-des-groupes-aleatoirement">Fonction pour crée des groupes aleatoirement</h1>
+<p>Cette fonction permet de créer des groupes à partir d’une liste d’éléments, en utilisant un paramètre k qui définit le nombre de personnes par groupe. Les informations sont stockées dans un fichier JSON.</p>
+<p>Vous trouverez la fonction [ici] (https://github.com/NoemIADev/Prairie/tree/72aa73d78d69527df2aafeb07274d8acfa40226b/noemie-doc/exo4)</p>
+<h2 id="detaillons-ensemble-son-fonctionnement">Détaillons ensemble son fonctionnement</h2>
+<p>Le but de cette fonction c'est de créer groupe juste en donnant la liste des personnes ou autres qui composeront le groupe et combien d'élément l'on souhaite par groupes.Le fichier json permet de ne pas avoir modifié le code en lui même.
+<em>exemple</em>:
+    {"eleves":["alex","bob","chloe","david","elie","franc","gwen","helene","igor","jean"],
+    "k": 3 }
+Ici si je veux des groupes de 2 ou 4 je n'ai qu'a changé la valeur de k et si je veux ajouter ou enlever des personnes je n'ai qu'a effacé leur nom ou en ajouter je peux même faire des groupes de fruits ça n'a pas d'importance.
+<em>resultat quand on lance le code</em>:
+    groupe final: [['bob', 'elie', 'helene'], ['chloe', 'franc', 'igor'], ['david', 'jean', 'gwen', 'alex']]
+<em>le resultat est aleatoire,le groupe change à chaque fois</em></p>
+<h2 id="comment-sa-marche">Comment sa marche ?</h2>
+<p>Regardons le code de plus près:
+    with open("Variable.json") as Variable:
+    data = json.load(Variable)
+    eleves = data["eleves"]
+    k = data["k"]</p>
+<p>Cette partie du code permet de récupérer les éléments nécessaires, mentionnés précédemment.<br />
+Grâce à cela, il n’est pas nécessaire de modifier le code par la suite, car les valeurs peuvent être réutilisées directement.</p>
+<p>Ensuite, la fonction <code>groupe(eleves, k)</code> est définie.</p>
+<p>Cette fonction prend deux paramètres :
+- <code>eleves</code>, qui correspond à la liste des élèves,
+- <code>k</code>, qui définit le nombre de personnes par groupe.</p>
+<p>Ces paramètres sont définis en amont et transmis à la fonction afin qu’elle puisse les utiliser à l’intérieur de celle-ci pour créer les groupes.
+Ensuite on melange la liste d'eleves qu'on à recupéré <code>random.shuffle(eleves)</code> qu'on va l'utilisé pour crée la liste de groupe qui du coup sera faite à partir de la liste melanger et nom celle remplis dans Json.
+     # cree des groupe de taille k a partir de la liste melanger</p>
+<pre><code>listgroupe =[eleves[i:i+k]for i in range(0,len(eleves),k)]
+</code></pre>
+<p>Ici, on crée la liste <code>listegroupe</code>.<br />
+On part de la liste <code>eleves</code>, qui est déjà mélangée, et on la parcourt par groupes de <code>k</code> éléments(ici 3).</p>
+<p>À chaque étape, on prend les <code>k</code> élèves suivants afin de former un groupe.<br />
+Ce mécanisme se répète jusqu’à ce que toute la liste des élèves ait été traitée.</p>
+<h2 id="probleme">Probleme</h2>
+<p><strong>A partir de la un probleme ce pose:</strong>
+Si je fait un print de ma liste de groupe qui est dans l'exemple de 10 personnes
+    print("les groupes avant ajustement sont :",listgroupe)
+Le resulat:
+    print("les groupes avant ajustement sont :",listgroupe)</p>
+<pre><code>les groupes avant ajustement sont : [['igor', 'chloe', 'alex'], ['jean', 'gwen', 'elie'], ['helene', 'franc', 'david'], ['bob']]
+</code></pre>
+<p>Bob est seul dans son groupe donc on a un groupe de 1 et on est d'accord si on veut faire des groupes c'est qu'on veut qu'il soit au moins 2 par tout seul.</p>
+<h2 id="solution">Solution</h2>
+<p>On doit ajouter une condition pour que le Bob soit integré un groupe pour pas qu'il se sente mis a part 😞.
+Et quand on veut dire python attention si il se passe "ca" fait "cela" on crée une condition !</p>
+<pre><code># si la liste fait mini 3 groupe et que le dernier groupe a un seul eleve
+
+if len(listgroupe)&gt;=3 and len(listgroupe[-1])== 1 :
+
+    # ajoute le dernier eleve au groupe precedent
+    listgroupe[-2].append(listgroupe[-1][0])
+
+# Supprime le dernier groupe vide 
+    listgroupe.pop()
+return listgroupe
+</code></pre>
+<p><em>Resultat</em>:
+    print("groupe final:",groupe(eleves,3))
+    groupe final: [['igor', 'chloe', 'alex'], ['jean', 'gwen', 'elie'], ['helene', 'franc', 'david', 'bob']]
+Et voila Bob a etait ajouter au groupe d'helene &amp; co il est content.</p>
+<p><a href="../images/bob.gif">bobheureux</a></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
