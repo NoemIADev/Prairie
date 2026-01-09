@@ -7,15 +7,15 @@ pour cela on crée un tableau de donné qui va contenir la V la victime et A B C
 
 [Lien vers le code complet](https://github.com/NoemIADev/Prairie/blob/master/noemie-doc/octavia/dataframe.py)
 
-```py
+```python
 #créer une fonction qui remplit dataframe avec 1,2,3 et ref avec 1 ou 2 ou 3 qui est = à ref et les autre aleatoire mais tous different,puis A,B,C,D qui vont choisir une barre aleatoirement parmi 1,2,3 qui n'est pas egale a ref
 
 def auto(n) :
-    ```
+```
 
 crée 100 lignes de barres qui sont toujours differentes:
 
-```
+```python
 valeurs_barres = [random.sample(range(0, 101), 3) for _ in range(100)]
 ```
 ici c'est le "sample" qui permet qu'il n'y ai pas de doublon
