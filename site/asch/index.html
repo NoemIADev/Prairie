@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Vérification - Prairie Documentation</title>
+    <title>l'expérience de Asch - Prairie Documentation</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "V\u00e9rification";
-        var mkdocs_page_input_path = "verification.md";
+        var mkdocs_page_name = "l\u0027exp\u00e9rience de Asch";
+        var mkdocs_page_input_path = "asch.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -47,10 +47,8 @@
                 <li class="toctree-l1"><a class="reference internal" href="../requetesHTTP/">Requêtes HTTP</a>
                 </li>
               </ul>
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="#">Vérification</a>
-    <ul class="current">
-    </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../verification/">Vérification</a>
                 </li>
               </ul>
               <ul>
@@ -79,7 +77,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Vérification</li>
+      <li class="breadcrumb-item active">l'expérience de Asch</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -88,17 +86,60 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="verification">Verification</h1>
-<p>Verifie si python et Node sont installés
-et si 2+2 font 4 (on ne sait jamais ca peut changer)</p>
-<p>Vous trouverez la fonction <a href="https://github.com/NoemIADev/Prairie/blob/master/verification.ps1">ici</a></p>
+                <h1 id="lexperience-de-asch">l'expérience de Asch</h1>
+<p>Dans cet exercice on doit entrainer un model à partir d'un tableau qui simule l'expérience d'Asch (<em>Le paradigme d'Asch est une étude fondamentale pour comprendre la pression des pairs au sein d'un groupe . Les expériences d'Asch ont démontré comment les individus sont influencés par l'opinion majoritaire d'un groupe, même lorsque celle-ci est en contradiction avec leur propre jugement.</em>) le model entrainé doit représenter la personne piégée qui doit choisir la barre de la même taille que la référence.</p>
+<p>pour cela on crée un tableau de donné qui va contenir la V la victime et A B C D les complices qui vont répondre faux et les barres 1 2 3 et REF.</p>
+<h2 id="creation-du-dataframe">Creation du dataframe</h2>
+<p><a href="https://github.com/NoemIADev/Prairie/blob/master/noemie-doc/octavia/dataframe.py">Lien vers le code complet</a></p>
+<pre><code class="language-py">#créer une fonction qui remplit dataframe avec 1,2,3 et ref avec 1 ou 2 ou 3 qui est = à ref et les autre aleatoire mais tous different,puis A,B,C,D qui vont choisir une barre aleatoirement parmi 1,2,3 qui n'est pas egale a ref
+
+def auto(n) :
+    ```
+
+crée 100 lignes de barres qui sont toujours differentes:
+
+</code></pre>
+<p>valeurs_barres = [random.sample(range(0, 101), 3) for _ in range(100)]</p>
+<pre><code>ici c'est le &quot;sample&quot; qui permet qu'il n'y ai pas de doublon
+
+ensuite on crée  un le tableau avec des colonnes 1,2,3 pour valeurr &quot;valeurs_barres&quot;
+
+     df = pd.DataFrame(valeurs_barres,columns=[&quot;1&quot;,&quot;2&quot;,&quot;3&quot;],)
+
+puis ajouter une colonne ref qui prend une valeur aleatoire parmi 1,2,3:
+
+    df[&quot;ref&quot;] = [random.choice(v) for v in valeurs_barres]
+
+On determine les choix de colonnes des complices
+    cols = [&quot;1&quot;,&quot;2&quot;,&quot;3&quot;]
+
+on met dans finalChoices le choix final 
+    finalChoices = []
+
+Ensuite on va determiner les choix des complices en fonction des barres 
+
+```py
+
+ # pour chaque ligne dans df
+     for l in range(len(df)):
+
+         # on prend la valeur de ref pas ref directement
+         ref_val = df.loc[l, &quot;ref&quot;]
+            # on determine les choix possibles parmis les colonnes qui ne sont pas egale a ref
+         choix_possibles = [c for c in cols if df.loc[l, c] != ref_val]
+            # on ajoute un choix aleatoire parmi les choix possibles
+         finalChoices.append(random.choice(choix_possibles)) 
+</code></pre>
+<p>et on attribu un choix final a chaque complice
+    df["A"] = finalChoices
+     df["B"] = finalChoices
+     df["C"] = finalChoices
+     df["D"] = finalChoices
+     df["V"]= np.nan
+et on garde V vide qui sera remplis par notre focntion solve puis le model.</p>
               
             </div>
           </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../requetesHTTP/" class="btn btn-neutral float-left" title="Requêtes HTTP"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../makegroupe/" class="btn btn-neutral float-right" title="Make Groupe">Next <span class="icon icon-circle-arrow-right"></span></a>
-    </div>
 
   <hr/>
 
@@ -120,10 +161,6 @@ et si 2+2 font 4 (on ne sait jamais ca peut changer)</p>
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../requetesHTTP/" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="../makegroupe/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
