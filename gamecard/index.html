@@ -111,6 +111,10 @@
     </ul>
                 </li>
               </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="../Asch :asch.md">None</a>
+                </li>
+              </ul>
       </div>
     </div>
     </nav>
@@ -138,7 +142,7 @@
 <blockquote>
 <p>Simulation d’un jeu de cartes entre un ROBOT et un HUMAIN, avec comparaison de stratégies.</p>
 </blockquote>
-<p><a href="https://github.com/NoemIADev/Prairie/tree/master/noemie-doc/Nona">Lien vert le depot</a></p>
+<p><a href="https://github.com/NoemIADev/Prairie/tree/master/noemie-doc/Nona">Lien vers le depot</a></p>
 <hr />
 <h2 id="enonce-de-lexercice">Énoncé de l’exercice</h2>
 <p>Le but de cet exercice est de simuler un jeu de cartes très simple entre deux joueurs :
@@ -364,8 +368,13 @@ gagnant = partie(
 <p>la fonction partie() retourne le gagnant</p>
 </li>
 </ul>
-<p>puis on determine le gagnant  if gagnant.name == "ROBOT":
-        victoires_robot += 1</p>
+<p>puis on determine le gagnant </p>
+<pre><code class="language-py"> if gagnant.name == &quot;ROBOT&quot;:
+        victoires_robot += 1 
+</code></pre>
+<p>puis on affiche le pourcentage de victoire du robot</p>
+<pre><code class="language-py">print(&quot;% victoire robot: &quot;, (victoires_robot / n_parties)*100)
+</code></pre>
               
             </div>
           </div><footer>
