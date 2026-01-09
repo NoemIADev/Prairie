@@ -2,7 +2,7 @@
 
 > Simulation d’un jeu de cartes entre un ROBOT et un HUMAIN, avec comparaison de stratégies.
 
-[Lien vert le depot](https://github.com/NoemIADev/Prairie/tree/master/noemie-doc/Nona)
+[Lien vers le depot](https://github.com/NoemIADev/Prairie/tree/master/noemie-doc/Nona)
 
 ---
 
@@ -272,5 +272,14 @@ On lance n_parties simulations consécutives.
 
 - la fonction partie() retourne le gagnant
 
-puis on determine le gagnant  if gagnant.name == "ROBOT":
-        victoires_robot += 1
+puis on determine le gagnant 
+
+```py
+ if gagnant.name == "ROBOT":
+        victoires_robot += 1 
+```
+puis on affiche le pourcentage de victoire du robot
+```py
+print("% victoire robot: ", (victoires_robot / n_parties)*100)
+```
+
