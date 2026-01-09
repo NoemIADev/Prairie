@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Game card - Prairie Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Game card";
+        var mkdocs_page_input_path = "gamecard.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Prairie Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Accueil</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../requetesHTTP/">Requêtes HTTP</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../verification/">Vérification</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../makegroupe/">Make Groupe</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Game card</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#enonce-de-lexercice">Énoncé de l’exercice</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#regles-du-jeu">Règles du jeu</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#materiel">Matériel</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#joueurs">Joueurs</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#deroulement">Déroulement</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#structure-du-projet">Structure du projet</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#classe-carte">Classe Carte</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#classe-joueur-joueurpy">Classe Joueur (Joueur.py)</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#initialisation-du-joueur">Initialisation du joueur</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#strategies-de-jeu-strategypy">Stratégies de jeu (strategy.py)</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#strategie-aleatoire">Stratégie aléatoire</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#strategie-de-la-plus-grande">Strategie de la plus Grande</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#strategie-de-la-plus-petite">Stratégie de la plus petite</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#strategie-smart">Stratégie smart</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#deroulement-de-la-partie-partiespy">Déroulement de la partie (parties.py)</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#definition-de-la-fonction">Définition de la fonction</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#creation-de-la-pioche">Création de la pioche</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#creation-des-joueurs">Création des joueurs</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#distribution-des-cartes">Distribution des cartes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#deroulement-des-tours">Déroulement des tours</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#simulation-de-plusieurs-parties-mainpy">Simulation de plusieurs parties (main.py)</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Prairie Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Game card</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="card-game">Card Game</h1>
+<blockquote>
+<p>Simulation d’un jeu de cartes entre un ROBOT et un HUMAIN, avec comparaison de stratégies.</p>
+</blockquote>
+<p><a href="https://github.com/NoemIADev/Prairie/tree/master/noemie-doc/Nona">Lien vert le depot</a></p>
+<hr />
+<h2 id="enonce-de-lexercice">Énoncé de l’exercice</h2>
+<p>Le but de cet exercice est de simuler un jeu de cartes très simple entre deux joueurs :
+- un <strong>ROBOT</strong>
+- un <strong>HUMAIN</strong></p>
+<p>Puis :
+- simuler un grand nombre de parties
+- calculer le <strong>pourcentage de victoire du robot</strong>
+- tester différentes <strong>stratégies de jeu</strong> pour comparer leurs performances</p>
+<hr />
+<h2 id="regles-du-jeu">Règles du jeu</h2>
+<h3 id="materiel">Matériel</h3>
+<ul>
+<li>10 cartes au total :</li>
+<li>5 cartes <strong>rond</strong> numérotées de 0 à 4</li>
+<li>5 cartes <strong>carré</strong> numérotées de 1 à 5</li>
+</ul>
+<h3 id="joueurs">Joueurs</h3>
+<ul>
+<li>2 joueurs : <strong>ROBOT</strong> et <strong>HUMAIN</strong></li>
+</ul>
+<h3 id="deroulement">Déroulement</h3>
+<ul>
+<li>Chaque joueur reçoit 5 cartes au hasard</li>
+<li>La partie se joue en <strong>5 tours</strong></li>
+<li>À chaque tour :</li>
+<li>Le robot joue une carte</li>
+<li>L’humain joue une carte</li>
+<li>Le joueur qui a la carte avec la <strong>plus grande valeur</strong> gagne le pli</li>
+<li>En cas d’égalité, <strong>le robot gagne</strong></li>
+<li>Le joueur qui gagne <strong>au moins 3 plis</strong> remporte la partie</li>
+</ul>
+<hr />
+<h2 id="structure-du-projet">Structure du projet</h2>
+<p>Le projet est découpé en plusieurs fichiers pour séparer les responsabilités :</p>
+<ul>
+<li><code>Card.py</code> → représentation d’une carte</li>
+<li><code>Joueur.py</code> → gestion d’un joueur</li>
+<li><code>strategy.py</code> → stratégies de jeu</li>
+<li><code>parties.py</code> → logique d’une partie complète</li>
+<li><code>main.py</code> → simulation de plusieurs parties et statistiques</li>
+</ul>
+<hr />
+<h2 id="classe-carte">Classe Carte</h2>
+<p>Chaque carte est définie par :
+- un <strong>chiffre</strong>
+- une <strong>forme</strong></p>
+<pre><code class="language-python">class Carte:
+    def __init__(self, chiffre, forme):
+        self.chiffre = chiffre
+        self.forme = forme
+
+    def __str__(self):
+        return str(self.chiffre) + str(self.forme)
+</code></pre>
+<pre><code>---
+</code></pre>
+<h2 id="classe-joueur-joueurpy">Classe Joueur (<code>Joueur.py</code>)</h2>
+<p>La classe <code>Player</code> représente un joueur du jeu.
+Un joueur possède :
+- un <strong>nom</strong> (<code>name</code>)
+- une <strong>main de cartes</strong> (<code>hand</code>)
+- un <strong>nombre de points</strong> (<code>points</code>)
+- une <strong>stratégie</strong> qui détermine quelle carte jouer</p>
+<hr />
+<h3 id="initialisation-du-joueur">Initialisation du joueur</h3>
+<pre><code class="language-python">from Card import Carte
+
+class Player:
+    def __init__(self, name, hand, points=0, strategy=None):
+        self.name = name
+        self.hand = hand
+        self.points = points
+        self.strategy = strategy
+</code></pre>
+<hr />
+<h2 id="strategies-de-jeu-strategypy">Stratégies de jeu (<code>strategy.py</code>)</h2>
+<p>Une <strong>stratégie</strong> est une fonction qui choisit quelle carte jouer.
+Elle reçoit :
+- <code>hand</code> → la main du joueur (liste de cartes)
+- <code>carte</code> → la carte jouée par l’adversaire (ou <code>None</code> si on ne sait pas)</p>
+<p>Elle doit <strong>retourner une Carte</strong> (et l’enlever de la main).</p>
+<hr />
+<h3 id="strategie-aleatoire">Stratégie aléatoire</h3>
+<pre><code class="language-python">import random
+
+def rand(hand, carte):
+    random.shuffle(hand)
+    return hand.pop()
+</code></pre>
+<p>Elle dit au joueur de toujours jouer une carte au pif.</p>
+<hr />
+<h3 id="strategie-de-la-plus-grande">Strategie de la plus Grande</h3>
+<pre><code>def plusGrande(hand, carte):
+hand.sort(key=lambda carte: carte.chiffre)
+return hand.pop(-1)
+</code></pre>
+<p>On range la liste de carte dans l'ordre croissant puis on joue la derniere (donc la plus grande).</p>
+<hr />
+<h3 id="strategie-de-la-plus-petite">Stratégie de la plus petite</h3>
+<pre><code>def plusPetite(hand, carte):
+hand.sort(key=lambda carte: carte.chiffre)
+return hand.pop()
+</code></pre>
+<p>Pareil au précédent sauf qu'on joue la 1er carte (donc la plus petite).</p>
+<hr />
+<h3 id="strategie-smart">Stratégie smart</h3>
+<pre><code>def smart(hand, carte):
+if carte:
+    hand.sort(key=lambda c: c.chiffre)
+    for c in hand:
+        if c.chiffre &gt; carte.chiffre:
+            hand.remove(c)
+            return c
+return plusPetite(hand, carte)
+</code></pre>
+<p>Cette fois le joueur va réfléchir un peu plus on va lui faire comparer la carte jouée par l'adversaire pour qu'il joue la plus grande s'il n'a pas la plus grande il joue la plus petite pour ne pas perdre de grosses cartes.</p>
+<h2 id="deroulement-de-la-partie-partiespy">Déroulement de la partie (<code>parties.py</code>)</h2>
+<p>Le fichier <code>parties.py</code> contient la fonction <code>partie()</code> qui simule une partie complète
+entre un ROBOT et un HUMAIN.</p>
+<p>Cette fonction permet de :
+- créer la pioche
+- mélanger et distribuer les cartes
+- jouer 5 tours
+- compter les points
+- déterminer le gagnant</p>
+<hr />
+<h3 id="definition-de-la-fonction">Définition de la fonction</h3>
+<pre><code class="language-python">def partie(strategy_humain, strategy_robot):
+</code></pre>
+<p>La fonction prend en paramètre :</p>
+<ul>
+<li>
+<p>strategy_humain : stratégie utilisée par l’humain</p>
+</li>
+<li>
+<p>strategy_robot : stratégie utilisée par le robot</p>
+</li>
+</ul>
+<p>Cela permet de tester différentes combinaisons de stratégies.</p>
+<h3 id="creation-de-la-pioche">Création de la pioche</h3>
+<p>On commence par créer une liste pioche contenant les 10 cartes du jeu.</p>
+<pre><code>pioche = []
+
+for chiffre in range(1, 6):
+        pioche.append(Carte(chiffre, "○"))
+
+for chiffre in range(0, 5):
+        pioche.append(Carte(chiffre, "▢"))
+</code></pre>
+<p>puis on la melange <code>random.shuffle(pioche)</code></p>
+<h3 id="creation-des-joueurs">Création des joueurs</h3>
+<pre><code> # Il y a 2 joueurs : le ROBOT et l’HUMAIN.
+
+humain = Player("HUMAIN", [], strategy=strategy_humain)
+robot = Player("ROBOT", [], strategy=strategy_robot)
+</code></pre>
+<p>Chaque joueur possède un nom, une main vide au départ
+et une stratégie définie lors de l’appel de la fonction.</p>
+<h3 id="distribution-des-cartes">Distribution des cartes</h3>
+<p>Les cartes sont distribuées alternativement jusqu’à ce que la pioche soit vide.
+     while len(pioche) &gt; 0:
+            humain.hand.append(pioche.pop(-1))
+            robot.hand.append(pioche.pop(-1))</p>
+<p>À la fin de la distribution :</p>
+<ul>
+<li>
+<p>l’humain possède 5 cartes</p>
+</li>
+<li>
+<p>le robot possède 5 cartes</p>
+</li>
+</ul>
+<h3 id="deroulement-des-tours">Déroulement des tours</h3>
+<p>La partie se joue en 5 tours.</p>
+<pre><code> for tour in range(5):
+    carte_du_robot = robot.play(carte_de_humain)
+    carte_de_humain = humain.play(carte_du_robot)
+</code></pre>
+<p>À chaque tour :
+- le robot joue une carte
+- l’humain joue une carte en réponse
+les stratégies déterminent automatiquement les cartes jouées.</p>
+<p>À la fin des de chaque plis, le gagnant est déterminé ainsi :
+    if carte_du_robot.chiffre &gt;= carte_de_humain.chiffre:
+            points_robot += 1</p>
+<p>Si le robot gagne le pli, son nombre de points augmente de 1.</p>
+<p>À la fin des 5 tours, le gagnant est déterminé ainsi :</p>
+<p><code>return robot if points_robot &gt;= 3 else humain</code></p>
+<p>Le robot gagne s’il remporte au moins 3 plis,
+sinon c’est l’humain qui gagne la partie.</p>
+<hr />
+<h2 id="simulation-de-plusieurs-parties-mainpy">Simulation de plusieurs parties (<code>main.py</code>)</h2>
+<p>Le fichier <code>main.py</code> permet de lancer un grand nombre de parties
+afin de calculer le <strong>pourcentage de victoire du robot</strong>
+en fonction des stratégies utilisées.</p>
+<pre><code class="language-py">n_parties = 1000
+victoires_robot = 0
+</code></pre>
+<ul>
+<li>
+<p>n_parties : nombre total de parties simulées</p>
+</li>
+<li>
+<p>victoires_robot : compteur du nombre de victoires du robot</p>
+</li>
+</ul>
+<p>On lance n_parties simulations consécutives.</p>
+<pre><code>for i in range(n_parties):
+gagnant = partie(
+    strategy_humain=smart,
+    strategy_robot=smart
+)
+</code></pre>
+<ul>
+<li>
+<p>une nouvelle partie est simulée</p>
+</li>
+<li>
+<p>les stratégies de l’humain et du robot sont définies ici</p>
+</li>
+<li>
+<p>la fonction partie() retourne le gagnant</p>
+</li>
+</ul>
+<p>puis on determine le gagnant  if gagnant.name == "ROBOT":
+        victoires_robot += 1</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../makegroupe/" class="btn btn-neutral float-left" title="Make Groupe"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../makegroupe/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
