@@ -2,7 +2,7 @@
 
 Cette fonction permet de créer des groupes à partir d’une liste d’éléments, en utilisant un paramètre k qui définit le nombre de personnes par groupe. Les informations sont stockées dans un fichier JSON.
 
-Vous trouverez la fonction [ici] (https://github.com/NoemIADev/Prairie/tree/72aa73d78d69527df2aafeb07274d8acfa40226b/noemie-doc/exo4)
+Vous trouverez la fonction [ici](https://github.com/NoemIADev/Prairie/tree/master/noemie-doc/exo4)
 
 ## Détaillons ensemble son fonctionnement
 
@@ -72,8 +72,12 @@ Et quand on veut dire python attention si il se passe "ca" fait "cela" on crée 
     return listgroupe 
 
 *Resultat*:
-    print("groupe final:",groupe(eleves,3))
-    groupe final: [['igor', 'chloe', 'alex'], ['jean', 'gwen', 'elie'], ['helene', 'franc', 'david', 'bob']]
+
+```py 
+print("groupe final:",groupe(eleves,3))
+groupe final: [['igor', 'chloe', 'alex'], ['jean', 'gwen', 'elie'], ['helene', 'franc', 'david', 'bob']]
+```
+
 Et voila Bob a etait ajouter au groupe d'helene & co il est content.
 
-[bobheureux](images/bob.gif)
+![bobheureux](images/bob.gif)
