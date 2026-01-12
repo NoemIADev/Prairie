@@ -23,6 +23,10 @@ exemple : quand vous faites une recherche google les propositions s'actualisent 
 
 Il ne faut pas confondre un système rapide avec un système réactive ce n'est pas la même chose. Un programme, une interface peut être rapide sans pour autant être réactive, un petit exemple pour bien saisir la différence :
 
-<video controls autoplay loop muted width="500">
-  <source src="video/rapide.mp4" type="video/mp4">
-</video>
+![rapide](images/rapide.gif)
+
+On peut courir vite et ne pas etre reactive ici le bonhomme court mais marque une pause avant de sauté car il n'a pas **anticipé** l'obstacle donc il s'arrete pour **reflechir** à comment reagir a cette nouvelle information puis il saute.
+
+![react](images/react.gif)
+
+Maintenant on peut voir que le bonhomme court sans interuption et reagis **imediatement** face au roché sans avoir besoin de **s'arreter pour reflechir**

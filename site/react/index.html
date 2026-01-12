@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Asch - Prairie Documentation</title>
+    <title>Programation réactive - Prairie Documentation</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Asch";
-        var mkdocs_page_input_path = "asch.md";
+        var mkdocs_page_name = "Programation r\u00e9active";
+        var mkdocs_page_input_path = "react.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -59,16 +59,16 @@
                 <li class="toctree-l1"><a class="reference internal" href="../gamecard/">Game card</a>
                 </li>
               </ul>
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="#">Asch</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#creation-du-dataframe">Creation du dataframe</a>
-    </li>
-    </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../asch/">Asch</a>
                 </li>
               </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../react/">Programation réactive</a>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Programation réactive</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#reacive-rapide">Reacive ≠ Rapide</a>
+    </li>
+    </ul>
                 </li>
               </ul>
       </div>
@@ -85,7 +85,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Asch</li>
+      <li class="breadcrumb-item active">Programation réactive</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -94,54 +94,26 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="lexperience-de-asch">l'expérience de Asch</h1>
-<p>Dans cet exercice on doit entrainer un model à partir d'un tableau qui simule l'expérience d'Asch (<em>Le paradigme d'Asch est une étude fondamentale pour comprendre la pression des pairs au sein d'un groupe . Les expériences d'Asch ont démontré comment les individus sont influencés par l'opinion majoritaire d'un groupe, même lorsque celle-ci est en contradiction avec leur propre jugement.</em>) le model entrainé doit représenter la personne piégée qui doit choisir la barre de la même taille que la référence.</p>
-<p>pour cela on crée un tableau de donné qui va contenir la V la victime et A B C D les complices qui vont répondre faux et les barres 1 2 3 et REF.</p>
-<h2 id="creation-du-dataframe">Creation du dataframe</h2>
-<p><a href="https://github.com/NoemIADev/Prairie/blob/master/noemie-doc/octavia/dataframe.py">Lien vers le code complet</a></p>
-<pre><code class="language-python">#créer une fonction qui remplit dataframe avec 1,2,3 et ref avec 1 ou 2 ou 3 qui est = à ref et les autre aleatoire mais tous different,puis A,B,C,D qui vont choisir une barre aleatoirement parmi 1,2,3 qui n'est pas egale a ref
-
-def auto(n) :
-</code></pre>
-<p>crée 100 lignes de barres qui sont toujours differentes:</p>
-<pre><code class="language-python">valeurs_barres = [random.sample(range(0, 101), 3) for _ in range(100)]
-</code></pre>
-<p>ici c'est le "sample" qui permet qu'il n'y ai pas de doublon</p>
-<p>ensuite on crée  un le tableau avec des colonnes 1,2,3 pour valeurr "valeurs_barres"</p>
-<pre><code> df = pd.DataFrame(valeurs_barres,columns=["1","2","3"],)
-</code></pre>
-<p>puis ajouter une colonne ref qui prend une valeur aleatoire parmi 1,2,3:</p>
-<pre><code>df["ref"] = [random.choice(v) for v in valeurs_barres]
-</code></pre>
-<p>On determine les choix de colonnes des complices
-    cols = ["1","2","3"]</p>
-<p>on met dans finalChoices le choix final 
-    finalChoices = []</p>
-<p>Ensuite on va determiner les choix des complices en fonction des barres </p>
-<pre><code class="language-py">
- # pour chaque ligne dans df
-     for l in range(len(df)):
-
-         # on prend la valeur de ref pas ref directement
-         ref_val = df.loc[l, &quot;ref&quot;]
-            # on determine les choix possibles parmis les colonnes qui ne sont pas egale a ref
-         choix_possibles = [c for c in cols if df.loc[l, c] != ref_val]
-            # on ajoute un choix aleatoire parmi les choix possibles
-         finalChoices.append(random.choice(choix_possibles)) 
-</code></pre>
-<p>et on attribu un choix final a chaque complice
-    df["A"] = finalChoices
-     df["B"] = finalChoices
-     df["C"] = finalChoices
-     df["D"] = finalChoices
-     df["V"]= np.nan
-et on garde V vide qui sera remplis par notre focntion solve puis le model.</p>
+                <h1 id="la-programation-reactive">La programation réactive.</h1>
+<p>La réactivité, c’est la capacité d’un système (site, application, interface) à réagir automatiquement et immédiatement à un changement, sans action supplémentaire de l’utilisateur.</p>
+<p>Ce changement peut venir :</p>
+<p>-de l’utilisateur (clic, saisie clavier, scroll…)</p>
+<p>-du système (données reçues, timer, API, état interne)</p>
+<p>-du réseau (réponse serveur, erreur, chargement terminé)</p>
+<p><strong>Point clé</strong> :</p>
+<p>L’interface se met à jour parce que l’état change, pas parce qu’on lui dit explicitement de se rafraîchir.</p>
+<p>exemple : quand vous faites une recherche google les propositions s'actualisent en temps réel lorsque vous rentrez du texte.</p>
+<p><img alt="reactgoogle" src="../images/google.png" /></p>
+<h2 id="reacive-rapide">Reacive  ≠ Rapide</h2>
+<p>Il ne faut pas confondre un système rapide avec un système réactive ce n'est pas la même chose. Un programme, une interface peut être rapide sans pour autant être réactive, un petit exemple pour bien saisir la différence :</p>
+<video controls autoplay loop muted width="500">
+  <source src="video/rapide.mp4" type="video/mp4">
+</video>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../gamecard/" class="btn btn-neutral float-left" title="Game card"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../react/" class="btn btn-neutral float-right" title="Programation réactive">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../asch/" class="btn btn-neutral float-left" title="Asch"><span class="icon icon-circle-arrow-left"></span> Previous</a>
     </div>
 
   <hr/>
@@ -164,10 +136,8 @@ et on garde V vide qui sera remplis par notre focntion solve puis le model.</p>
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../gamecard/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../asch/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
-    
-      <span><a href="../react/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
