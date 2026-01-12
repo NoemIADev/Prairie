@@ -95,35 +95,26 @@
 <p>pour cela on crée un tableau de donné qui va contenir la V la victime et A B C D les complices qui vont répondre faux et les barres 1 2 3 et REF.</p>
 <h2 id="creation-du-dataframe">Creation du dataframe</h2>
 <p><a href="https://github.com/NoemIADev/Prairie/blob/master/noemie-doc/octavia/dataframe.py">Lien vers le code complet</a></p>
-<pre><code class="language-py">#créer une fonction qui remplit dataframe avec 1,2,3 et ref avec 1 ou 2 ou 3 qui est = à ref et les autre aleatoire mais tous different,puis A,B,C,D qui vont choisir une barre aleatoirement parmi 1,2,3 qui n'est pas egale a ref
+<pre><code class="language-python">#créer une fonction qui remplit dataframe avec 1,2,3 et ref avec 1 ou 2 ou 3 qui est = à ref et les autre aleatoire mais tous different,puis A,B,C,D qui vont choisir une barre aleatoirement parmi 1,2,3 qui n'est pas egale a ref
 
 def auto(n) :
-    ```
-
-crée 100 lignes de barres qui sont toujours differentes:
-
 </code></pre>
-<p>valeurs_barres = [random.sample(range(0, 101), 3) for _ in range(100)]</p>
-<pre><code>ici c'est le &quot;sample&quot; qui permet qu'il n'y ai pas de doublon
-
-ensuite on crée  un le tableau avec des colonnes 1,2,3 pour valeurr &quot;valeurs_barres&quot;
-
-     df = pd.DataFrame(valeurs_barres,columns=[&quot;1&quot;,&quot;2&quot;,&quot;3&quot;],)
-
-puis ajouter une colonne ref qui prend une valeur aleatoire parmi 1,2,3:
-
-    df[&quot;ref&quot;] = [random.choice(v) for v in valeurs_barres]
-
-On determine les choix de colonnes des complices
-    cols = [&quot;1&quot;,&quot;2&quot;,&quot;3&quot;]
-
-on met dans finalChoices le choix final 
-    finalChoices = []
-
-Ensuite on va determiner les choix des complices en fonction des barres 
-
-```py
-
+<p>crée 100 lignes de barres qui sont toujours differentes:</p>
+<pre><code class="language-python">valeurs_barres = [random.sample(range(0, 101), 3) for _ in range(100)]
+</code></pre>
+<p>ici c'est le "sample" qui permet qu'il n'y ai pas de doublon</p>
+<p>ensuite on crée  un le tableau avec des colonnes 1,2,3 pour valeurr "valeurs_barres"</p>
+<pre><code> df = pd.DataFrame(valeurs_barres,columns=["1","2","3"],)
+</code></pre>
+<p>puis ajouter une colonne ref qui prend une valeur aleatoire parmi 1,2,3:</p>
+<pre><code>df["ref"] = [random.choice(v) for v in valeurs_barres]
+</code></pre>
+<p>On determine les choix de colonnes des complices
+    cols = ["1","2","3"]</p>
+<p>on met dans finalChoices le choix final 
+    finalChoices = []</p>
+<p>Ensuite on va determiner les choix des complices en fonction des barres </p>
+<pre><code class="language-py">
  # pour chaque ligne dans df
      for l in range(len(df)):
 
