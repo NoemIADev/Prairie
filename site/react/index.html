@@ -66,7 +66,7 @@
               <ul class="current">
                 <li class="toctree-l1 current"><a class="reference internal current" href="#">Programation réactive</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#reacive-rapide">Reacive ≠ Rapide</a>
+    <li class="toctree-l2"><a class="reference internal" href="#reactive-rapide">Reactive ≠ Rapide</a>
     </li>
     </ul>
                 </li>
@@ -104,12 +104,14 @@
 <p>L’interface se met à jour parce que l’état change, pas parce qu’on lui dit explicitement de se rafraîchir.</p>
 <p>exemple : quand vous faites une recherche google les propositions s'actualisent en temps réel lorsque vous rentrez du texte.</p>
 <p><img alt="reactgoogle" src="../images/google.png" /></p>
-<h2 id="reacive-rapide">Reacive  ≠ Rapide</h2>
+<h2 id="reactive-rapide">Reactive  ≠ Rapide</h2>
 <p>Il ne faut pas confondre un système rapide avec un système réactive ce n'est pas la même chose. Un programme, une interface peut être rapide sans pour autant être réactive, un petit exemple pour bien saisir la différence :</p>
 <p><img alt="rapide" src="../images/rapide.gif" /></p>
-<p>On peut courir vite et ne pas etre reactive ici le bonhomme court mais marque une pause avant de sauté car il n'a pas <strong>anticipé</strong> l'obstacle donc il s'arrete pour <strong>reflechir</strong> à comment reagir a cette nouvelle information puis il saute.</p>
+<p>On peut courir vite et ne pas etre reactive ici le bonhomme court mais marque une pause avant de sauté car il <strong>n'a pas anticipé</strong> l'obstacle donc il s'arrete pour <strong>reflechir</strong> à comment reagir a cette nouvelle information puis il saute.</p>
 <p><img alt="react" src="../images/react.gif" /></p>
-<p>Maintenant on peut voir que le bonhomme court sans interuption et reagis <strong>imediatement</strong> face au roché sans avoir besoin de <strong>s'arreter pour reflechir</strong></p>
+<p>Maintenant on peut voir que le bonhomme court sans interruptions et <strong>réagies immédiatement</strong> face au rocher sans avoir besoin de <strong>s'arrêter pour réfléchir</strong>.</p>
+<p>c'est la différence entre rapide et réactive, être rapide ne signifie pas savoir faire face au problème rencontré et y réagir en conséquence de manière immédiate.</p>
+<p>Pour une application,un jeu ou autre ne pas être réactive c'est ne pas réagir en temps réel aux actions de l'utilisateur ou l'arrivée d'une nouvelle donnée.Si votre programme a besoin de s'actualiser en permanence dès qu'il reçoit une nouvelle information il n'est pas réactif même s'il le fait rapidement.</p>
               
             </div>
           </div><footer>
