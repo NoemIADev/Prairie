@@ -68,6 +68,10 @@
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#reactive-rapide">Reactive ≠ Rapide</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#exemple-dinterface-reactive">Exemple d'interface reactive</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#en-conclusion">En conclusion</a>
+    </li>
     </ul>
                 </li>
               </ul>
@@ -112,6 +116,50 @@
 <p>Maintenant on peut voir que le bonhomme court sans interruptions et <strong>réagies immédiatement</strong> face au rocher sans avoir besoin de <strong>s'arrêter pour réfléchir</strong>.</p>
 <p>c'est la différence entre rapide et réactive, être rapide ne signifie pas savoir faire face au problème rencontré et y réagir en conséquence de manière immédiate.</p>
 <p>Pour une application,un jeu ou autre ne pas être réactive c'est ne pas réagir en temps réel aux actions de l'utilisateur ou l'arrivée d'une nouvelle donnée.Si votre programme a besoin de s'actualiser en permanence dès qu'il reçoit une nouvelle information il n'est pas réactif même s'il le fait rapidement.</p>
+<h2 id="exemple-dinterface-reactive">Exemple d'interface reactive</h2>
+<p>Il y a plusieurs façons de rendre un programme (site app etc) réactive:</p>
+<p>-L'Architecture orientée événements(Event-driven architecture): le système réagit à un événement ; click, scroll, saisie clavier,nouveau message.</p>
+<p>-Programmation réactive (Reactive programming): les données sont observées , quand elles changent tout ce qui en dépend se met à jour automatiquement sans que l’interface s’actualise.</p>
+<p>-Architecture basée sur le flux de données (data streams/flux): les données arrivent en continu pas en une seule fois,l’app ne demande pas les données elle les reçoit</p>
+<p>Pour vous expliquer un peu le système de données observé et de réaction lié à un  événement voici un cas concréé:</p>
+<p><img alt="solidheroAvatar" src="../images/Avatar1.png" /></p>
+<p>Ici l'interface profil d'un jeu que j'ai fait avec swift qu'on apelle view. Il s'agit de l'interface avant modfication.</p>
+<p>Le personnage que vous voyez et les le nom mofiable en haut sont dans une Class :</p>
+<pre><code class="language-swift">import Foundation
+import Observation
+
+@Observable class User {
+    var selectedOutfit : String = &quot;&quot;
+           var selectedHair : String = &quot;coupeM1&quot;
+    var username = &quot;Ton prenom&quot;
+    var avatar : Avatar = Avatar (
+        hairs: [&quot;coupeM1&quot;,&quot;coupeM2&quot;,&quot;coupeM3&quot;,&quot;coupeM4&quot;,&quot;coupeM5&quot;,&quot;coupeF1&quot;,&quot;coupeF2&quot;,&quot;coupeF3&quot;,&quot;coupeF4&quot;,&quot;coupeF5&quot;], body: &quot;char&quot;, outfits: [&quot;&quot;,&quot;chevalier&quot;,&quot;aventurier&quot;,&quot;dress&quot;,&quot;hero&quot;])
+</code></pre>
+<p>Cette class reprend ma classe avatar qui se trouve autre par et le nom d'user "ton prenom" par defaut dans la zone de text modifiable.
+<code>@observable</code> indique que la classe user est ce qu'il faut observé</p>
+<p>passon du coter de la view </p>
+<pre><code class="language-swift">    @Bindable var data = User()
+</code></pre>
+<p>ici je dit a ma vue de se lié a mon observable "user" pourquoi car dans cette page j'ai des element qui vont modifié User et je veut que user soit changer en temps réel dans tout mes fichier observé (dans toute mes page qui apelle un elemenet de User)</p>
+<p><img alt="editview" src="../images/avatar2.png" /></p>
+<p>Voici l'edit view c'est ce qu s'affiche apres avoir cliqué sur le ceintre pour modifié le personnage on peut voir des bouton pour changer la tenu.</p>
+<pre><code class="language-swift">Button {
+    hairsIndex = (hairsIndex + 1) % data.avatar.hairs.count
+}
+</code></pre>
+<p>Ici rien de bien compliqué mon bouton recupere les donnée "observé" dans user qui vienne d'avatar souvenez vous on avait </p>
+<pre><code class="language-swift"> var avatar : Avatar = Avatar (
+        hairs: [&quot;coupeM1&quot;,&quot;coupeM2&quot;,&quot;coupeM3&quot;,&quot;coupeM4&quot;,&quot;coupeM5&quot;,&quot;coupeF1&quot;,&quot;coupeF2&quot;,&quot;coupeF3&quot;,&quot;coupeF4&quot;,&quot;coupeF5&quot;]
+</code></pre>
+<p>bon bouton a recupére cette liste grace a @bindable et @observable et juste la parcourire en fesant d'effilé les tenu snas jamais rechargé la page.
+c'est de la reactivé en reaction a un evenement ici le click mais aussi par observation.</p>
+<h2 id="en-conclusion">En conclusion</h2>
+<p>Il existe plusieurs façons de rendre une application ou une interface réactive.
+Cela peut passer par l’observation de l’état (comme en SwiftUI), mais aussi par
+d’autres sources de données comme les WebSockets pour le temps réel, les APIs
+(météo, suivi de commandes), ou encore les capteurs des téléphones comme le GPS.</p>
+<p>Dans tous les cas, le principe reste le même : lorsque les données changent,
+l’interface se met à jour automatiquement, sans rechargement manuel.</p>
               
             </div>
           </div><footer>
